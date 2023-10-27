@@ -1,3 +1,5 @@
+import time
+
 def istogramma(stringa):
     d = dict()
     for c in stringa:
@@ -32,11 +34,21 @@ def fibonacci(n):
     else:
         return fibonacci(n - 1) + fibonacci(n - 2)
 
+memo = {0:0, 1:1}
+
 def memo_fibonacci(n):
-    memo = {0:0, 1:1}
+    
     if n in memo:
         return memo[n]
     
     res = memo_fibonacci(n - 1) + memo_fibonacci(n - 2)
     memo[n] = res
     return res
+
+start = time.time()
+fibonacci(40)
+print("For computing fibonacci(40) elapsed ", time.time() - start, " seconds") 
+
+second_start = time.time()
+memo_fibonacci(40)
+print("For computing memo_fibonacci(40) elapsed ", time.time() - second_start, " seconds")
