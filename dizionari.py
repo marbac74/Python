@@ -31,3 +31,12 @@ def fibonacci(n):
         return 1
     else:
         return fibonacci(n - 1) + fibonacci(n - 2)
+
+def memo_fibonacci(n):
+    memo = {0:0, 1:1}
+    if n in memo:
+        return memo[n]
+    
+    res = memo_fibonacci(n - 1) + memo_fibonacci(n - 2)
+    memo[n] = res
+    return res
