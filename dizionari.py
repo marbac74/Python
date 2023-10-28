@@ -43,12 +43,12 @@ def memo_fibonacci(n):
     return res
 
 start = time.time()
-fibonacci(42)
-print("Per calcolare fibonacci(42) sono passati ", time.time() - start, " secondi") 
+fibonacci(40)
+print("Per calcolare fibonacci(40) sono passati ", time.time() - start, " secondi") 
 
 second_start = time.time()
-memo_fibonacci(42)
-print("Per calcolare memo_fibonacci(42) sono passati ", time.time() - second_start, " secondi")
+memo_fibonacci(40)
+print("Per calcolare memo_fibonacci(40) sono passati ", time.time() - second_start, " secondi")
 
 def controlla(stringa):
     inputfile = open('words.txt')
@@ -60,3 +60,11 @@ def controlla(stringa):
         return True
     else:
         return False
+
+def ha_duplicati(lista):
+    già_incontrati = {}
+    for item in lista:
+        if item in già_incontrati:
+            return True
+        già_incontrati[item] = 'inserted'
+    return False
