@@ -45,10 +45,21 @@ def memo_fibonacci(n):
     memo[n] = res
     return res
 
-start = time.time()
+"""start = time.time()
 fibonacci(40)
 print("For computing fibonacci(40) elapsed ", time.time() - start, " seconds") 
 
 second_start = time.time()
 memo_fibonacci(40)
-print("For computing memo_fibonacci(40) elapsed ", time.time() - second_start, " seconds")
+print("For computing memo_fibonacci(40) elapsed ", time.time() - second_start, " seconds")"""
+
+def controlla(stringa):
+    inputfile = open('words.txt')
+    dizionario = dict()
+    for riga in inputfile:
+        parola = riga.strip()
+        dizionario[parola] = 'inserted'
+    if stringa in dizionario:
+        return True
+    else:
+        return False
