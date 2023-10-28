@@ -42,13 +42,13 @@ def memo_fibonacci(n):
     memo[n] = res
     return res
 
-"""start = time.time()
-fibonacci(44)
-print("Per calcolare fibonacci(44) sono passati ", time.time() - start, " secondi") 
+start = time.time()
+fibonacci(42)
+print("Per calcolare fibonacci(42) sono passati ", time.time() - start, " secondi") 
 
 second_start = time.time()
-memo_fibonacci(44)
-print("Per calcolare memo_fibonacci(44) sono passati ", time.time() - second_start, " secondi")"""
+memo_fibonacci(42)
+print("Per calcolare memo_fibonacci(42) sono passati ", time.time() - second_start, " secondi")
 
 def controlla(stringa):
     inputfile = open('words.txt')
