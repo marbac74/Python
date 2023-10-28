@@ -50,3 +50,19 @@ def ha_duplicati(lista):
             return True
         già_incontrati.append(el)
     return False
+
+def wordlist1(inputfile):
+    input = open(inputfile)
+    lista = []
+    for riga in input:
+        parola = riga.strip()
+        lista.append(parola)
+    return len(lista)
+
+def wordlist2(inputfile):
+    input = open(inputfile)
+    lista = []
+    for riga in input:
+        parola = riga.strip()
+        lista = lista + [parola]
+    return len(lista)

@@ -16,14 +16,11 @@ def lookup_inverso(dict, value):
             return key
     raise LookupError('Il valore non compare nel dizionario')
 
-def inverti_dict(diz):
+def inverti_diz(diz):
     inverso = dict()
     for chiave in diz:
         valore = diz[chiave]
-        if valore not in inverso:
-            inverso[valore] = [chiave]
-        else:
-            inverso[valore].append(chiave)
+        inverso.setdefault(valore, []).append(chiave)
     return inverso
 
 def fibonacci(n):
@@ -46,12 +43,12 @@ def memo_fibonacci(n):
     return res
 
 """start = time.time()
-fibonacci(40)
-print("For computing fibonacci(40) elapsed ", time.time() - start, " seconds") 
+fibonacci(44)
+print("Per calcolare fibonacci(44) sono passati ", time.time() - start, " secondi") 
 
 second_start = time.time()
-memo_fibonacci(40)
-print("For computing memo_fibonacci(40) elapsed ", time.time() - second_start, " seconds")"""
+memo_fibonacci(44)
+print("Per calcolare memo_fibonacci(44) sono passati ", time.time() - second_start, " secondi")"""
 
 def controlla(stringa):
     inputfile = open('words.txt')
