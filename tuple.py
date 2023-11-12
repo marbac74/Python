@@ -1,4 +1,5 @@
 from dizionari import istogramma, inverti_diz
+from liste import anagramma
 import janus_swi as janus
 
 def sommatutto(*args):
@@ -28,3 +29,14 @@ def più_frequente(stringa):
     freq_dict = inverti_diz(char_freq)
     for item in janus.apply_once("tuple", "flatten", list(freq_dict.values())):
         print(item)
+
+def anagram_set(stringa):
+    output_dict = dict()
+    anagrammabili = []
+    input_file = open('words.txt')
+    for riga in input_file:
+        parola = riga.strip()
+        if anagramma(parola, stringa):
+            anagrammabili.append(parola)
+    output_dict[stringa] = anagrammabili
+    return output_dict
