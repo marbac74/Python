@@ -109,11 +109,7 @@ def stampa_più_comuni(isto, num=10):
         print(parola, freq, sep='\t')
 
 def sottrai(d1, d2):
-    result = dict()
-    for chiave in d1:
-        if chiave not in d2:
-            result[chiave] = None
-    return result
+    return set(d1) - set(d2)
 
 parole = elabora_file('words.txt')
 diff = sottrai(isto, parole)
