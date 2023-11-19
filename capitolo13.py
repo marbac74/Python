@@ -1,4 +1,4 @@
-import random
+import random, string
 
 from dizionari import istogramma
 
@@ -78,3 +78,44 @@ def estrai(stringa):
     for elem in isto:
         isto_lista.extend([elem for i in range(isto[elem])])
     return random.choice(isto_lista)
+
+def elabora_file(nomefile):
+    isto = dict()
+    input = open(nomefile)
+    for riga in input:
+        elabora_riga(riga, isto)
+    return isto
+
+def elabora_riga(riga, isto):
+    riga = riga.replace('-', ' ')
+    for parola in riga.split():
+        parola = parola.strip(string.punctuation + string.whitespace)
+        parola = parola.lower()
+        isto[parola] = isto.get(parola, 0) + 1
+
+isto = elabora_file('out.txt')
+
+def più_comuni(isto):
+    t = []
+    for chiave, valore in isto.items():
+        t.append((valore, chiave))
+    t.sort(reverse=True)
+    return t
+
+def stampa_più_comuni(isto, num=10):
+    t = più_comuni(isto)
+    print('Le parole più comuni sono:')
+    for freq, parola in t[:num]:
+        print(parola, freq, sep='\t')
+
+def sottrai(d1, d2):
+    result = dict()
+    for chiave in d1:
+        if chiave not in d2:
+            result[chiave] = None
+    return result
+
+parole = elabora_file('words.txt')
+diff = sottrai(isto, parole)
+for parola in diff:
+    print(parola, end=' ')
