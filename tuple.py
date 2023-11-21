@@ -39,4 +39,11 @@ def anagram_set(stringa):
         if anagramma(parola, stringa):
             anagrammabili.append(parola)
     output_dict[stringa] = anagrammabili
-    return output_dict
+    return janus.apply_once("tuple", "flatten", list(output_dict.values()))
+
+def stampa_anagrammi():
+    d = dict()
+    for item in ['deltas', 'retainers', 'generating', 'resmelts']:
+        d[item] = anagram_set(item)
+    for el in d:
+        print(d[el])

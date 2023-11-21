@@ -10,6 +10,9 @@ def evita(parola, vietate):
                 return False
     return True
 
+def set_evita(parola, vietate):
+    return set(parola) == (set(parola) - set(vietate))
+
 def usa_solo(parola, letteredausare):
     for lettera in parola:
         if lettera not in letteredausare:
