@@ -1,7 +1,6 @@
 def niente_e(parola):
-    for lettera in parola:
-        if lettera == 'e':
-            return False
+    if 'e' in parola:
+        return False
     return True
 
 def evita(parola, vietate):
@@ -14,10 +13,7 @@ def set_evita(parola, vietate):
     return set(parola) & set(vietate) == set()
 
 def usa_solo(parola, letteredausare):
-    for lettera in parola:
-        if lettera not in letteredausare:
-                return False
-    return True
+    return set(parola) <= set(letteredausare)
 
 def usa_tutte(parola, richieste):
     for lettera in richieste:
