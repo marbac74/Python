@@ -8,9 +8,9 @@ def somma_cumulata(lista):
     somma = 0
     output = []
     for el in lista:
+        nuovo = el + somma
         somma += el
-        output.append(el)
-    output.append(somma)
+        output.append(nuovo)
     return output
 
 def mediani(lista):
