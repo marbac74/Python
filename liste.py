@@ -66,3 +66,16 @@ def wordlist2(inputfile):
         parola = riga.strip()
         lista = lista + [parola]
     return len(lista)
+
+def bisezione(lista_parole, parola_da_cercare):
+    ordinata = sorted(lista_parole)
+    while len(ordinata) != 0:
+        n = len(ordinata) // 2
+        parola_mediana = ordinata[n]
+        if parola_da_cercare == parola_mediana:
+            return True
+        elif parola_da_cercare < parola_mediana:
+            ordinata = ordinata[:n]
+        elif parola_da_cercare > parola_mediana:
+            ordinata = ordinata[n+1:]
+    return False

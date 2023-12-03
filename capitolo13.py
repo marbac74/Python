@@ -113,5 +113,33 @@ def sottrai(d1, d2):
 
 parole = elabora_file('words.txt')
 diff = sottrai(isto, parole)
-for parola in diff:
-    print(parola, end=' ')
+#for parola in diff:
+#    print(parola, end=' ')
+
+def parola_a_caso(h):
+    t = []
+    for parola, freq in h.items():
+        t.extend([parola] * freq)
+    return random.choice(t)
+
+def somma_cumulata(istogramma):
+    somma = 0
+    output = []
+    for frequenza in istogramma.values():
+        nuovo = frequenza + somma
+        somma += frequenza
+        output.append(nuovo)
+    return output
+
+lista_parole = list(isto.keys())
+
+def parola_casuale(istogramma):
+    lista_freq = somma_cumulata(istogramma)
+    numero = random.randint(1, lista_freq[-1])
+    indice = 0
+    while indice < lista_freq[-1]:
+        if lista_freq[indice] == numero:
+            break
+        else:
+            indice += 1
+    return lista_parole[indice]

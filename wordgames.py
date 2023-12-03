@@ -1,3 +1,6 @@
+import random
+
+
 def niente_e(parola):
     if 'e' in parola:
         return False
