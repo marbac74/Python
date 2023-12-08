@@ -45,7 +45,7 @@ def process_line(line, hist):
     # TODO: rewrite using Counter
 
     # replace hyphens with spaces before splitting
-    line = line.replace('-', ' ')
+    line = line.replace('—', ' ')
     strippables = string.punctuation + string.whitespace
 
     for word in line.split():
@@ -129,8 +129,8 @@ def main():
     t = most_common(hist)
     print('The most common words are:')
     for freq, word in t[0:20]:
-        print(word, '\t', freq)
-"""
+        print(word, freq, sep='\t')
+
     words = process_file('words.txt', skip_header=False)
 
     diff = subtract(hist, words)
@@ -142,6 +142,6 @@ def main():
     for i in range(100):
         print(random_word(hist), end=' ')
 
-"""
+
 if __name__ == '__main__':
     main()
