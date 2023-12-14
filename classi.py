@@ -61,6 +61,59 @@ def viene_dopo(t1, t2):
     else:
         return False
 
+def somma_tempo(t1, t2):
+    somma = Tempo()
+    somma.ore = t1.ore + t2.ore # type: ignore
+    somma.minuti = t1.minuti + t2.minuti  # type: ignore
+    somma.secondi = t1.secondi + t2.secondi  # type: ignore
+
+    if somma.secondi >= 60: # type: ignore
+        somma.secondi -= 60 # type: ignore
+        somma.minuti += 1 # type: ignore
+
+    if somma.minuti >= 60: # type: ignore
+        somma.minuti -= 60 # type: ignore
+        somma.ore += 1 # type: ignore
+
+    return somma
+
+def incremento(tempo, secondi):
+    
+    tempo.secondi += secondi
+
+    if tempo.secondi >= 60:
+        minuti_in_più = tempo.secondi // 60
+        nuovi_secondi = tempo.secondi % 60
+        tempo.secondi = nuovi_secondi
+        tempo.minuti += minuti_in_più
+
+    if tempo.minuti >= 60:
+        ore_in_più = tempo.minuti // 60
+        nuovi_minuti = tempo.minuti % 60
+        tempo.minuti = nuovi_minuti
+        tempo.ore += ore_in_più
+
+def puroincremento(tempo, secondi):
+    
+    incremento = Tempo()
+    incremento = copy.copy(tempo)
+
+    incremento.secondi += secondi
+
+    if incremento.secondi >= 60:
+        minuti_in_più = incremento.secondi // 60
+        nuovi_secondi = incremento.secondi % 60
+        incremento.secondi = nuovi_secondi
+        incremento.minuti += minuti_in_più
+
+    if incremento.minuti >= 60:
+        ore_in_più = incremento.minuti // 60
+        nuovi_minuti = incremento.minuti % 60
+        incremento.minuti = nuovi_minuti
+        incremento.ore += ore_in_più
+    
+    return incremento
+
 box = Rettangolo()
 box.larghezza = 100.0 # type: ignore
 box.altezza = 200.0 # type: ignore
