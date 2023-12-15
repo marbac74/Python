@@ -62,36 +62,26 @@ def viene_dopo(t1, t2):
         return False
 
 def somma_tempo(t1, t2):
-    somma = Tempo()
-    somma.ore = t1.ore + t2.ore # type: ignore
-    somma.minuti = t1.minuti + t2.minuti  # type: ignore
-    somma.secondi = t1.secondi + t2.secondi  # type: ignore
+    assert tempo_valido(t1) and tempo_valido(t2)
+    secondi = tempo_in_int(t1) + tempo_in_int(t2)
+    return int_in_tempo(secondi)
 
-    if somma.secondi >= 60: # type: ignore
-        somma.secondi -= 60 # type: ignore
-        somma.minuti += 1 # type: ignore
-
-    if somma.minuti >= 60: # type: ignore
-        somma.minuti -= 60 # type: ignore
-        somma.ore += 1 # type: ignore
-
-    return somma
+def moltiplica_tempo(tempo, numero):
+    assert tempo_valido(tempo) and numero > 0
+    nuovo_tempo_sec = tempo_in_int(tempo) * numero
+    nuovo_tempo = int_in_tempo(nuovo_tempo_sec)
+    return nuovo_tempo
 
 def incremento(tempo, secondi):
-    
-    tempo.secondi += secondi
+    tempo_e_inc = tempo_in_int(tempo) + secondi
+    return int_in_tempo(tempo_e_inc)
 
-    if tempo.secondi >= 60:
-        minuti_in_più = tempo.secondi // 60
-        nuovi_secondi = tempo.secondi % 60
-        tempo.secondi = nuovi_secondi
-        tempo.minuti += minuti_in_più
-
-    if tempo.minuti >= 60:
-        ore_in_più = tempo.minuti // 60
-        nuovi_minuti = tempo.minuti % 60
-        tempo.minuti = nuovi_minuti
-        tempo.ore += ore_in_più
+def tempo_valido(tempo):
+    if tempo.ore < 0 or tempo.minuti < 0 or tempo.secondi < 0:
+        return False
+    if tempo.minuti >= 60 or tempo.secondi >= 60:
+        return False
+    return True
 
 def puroincremento(tempo, secondi):
     
@@ -113,6 +103,17 @@ def puroincremento(tempo, secondi):
         incremento.ore += ore_in_più
     
     return incremento
+
+def tempo_in_int(tempo):
+    minuti = tempo.ore * 60 + tempo.minuti
+    secondi = minuti * 60 + tempo.secondi
+    return secondi
+
+def int_in_tempo(secondi):
+    tempo = Tempo()
+    minuti, tempo.secondi = divmod(secondi, 60) # type: ignore
+    tempo.ore, tempo.minuti = divmod(minuti, 60) # type: ignore
+    return tempo
 
 box = Rettangolo()
 box.larghezza = 100.0 # type: ignore
@@ -205,4 +206,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    pass
