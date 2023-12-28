@@ -3,33 +3,36 @@ import copy
 import turtle
 
 class Punto:
-    """ Rappresenta un punto su un piano cartesiano
+    """Rappresenta un punto su un piano cartesiano
     attributi: x, y
     """
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return '(%g, %g)' % (self.x, self.y)
+ 
+
+    def distanza_tra_punti(self, other):
+        quadrato_diff_x = (other.x - self.x)**2
+        quadrato_diff_y = (other.y - self.y)**2 
+
+        return math.sqrt(quadrato_diff_x + quadrato_diff_y)
 
 class Rettangolo:
-    """ Rappresenta un rettangolo
+    """Rappresenta un rettangolo
     attributi: larghezza, altezza, angolo
     """
 
 class Cerchio:
-    """ Rappresenta un cerchio
+    """Rappresenta un cerchio
     attributi: centro, raggio
     """
 class Tempo:
-    """ Rappresenta un'ora del giorno
+    """Rappresenta un'ora del giorno
     attributi: ore, minuti, secondi
     """
-
-def stampa_punto(punto):
-    print('(%g, %g)' % (punto.x, punto.y))
-
-def distanza_tra_punti(punto1, punto2):
-
-    quadrato_diff_x = (punto2.x - punto1.x)**2
-    quadrato_diff_y = (punto2.y - punto1.y)**2 
-
-    return math.sqrt(quadrato_diff_x + quadrato_diff_y)
 
 def trova_centro(rettangolo):
     p = Punto()
@@ -128,7 +131,6 @@ circle.centro = Punto() # type: ignore
 circle.centro.x = 150.0 # type: ignore
 circle.centro.y = 100.0 # type: ignore
 circle.raggio = 75.0 # type: ignore
-"""
 
 def punto_nel_cerchio(cerchio, punto):
     centro = cerchio.centro
@@ -167,7 +169,7 @@ def rett_cerchio_sovrapp(cerchio, rettangolo):
     if punto_nel_cerchio(cerchio, angolo):
         return True
     return False
-
+"""
 def disegna_rett(tarta, rett):
     
     # disegna il rettangolo
