@@ -6,8 +6,8 @@ def int_in_tempo(secondi):
 
 class Tempo:
     """Rappresenta un'ora del giorno
-    attributi: ore, minuti, secondi
-    """
+    attributi: ore, minuti, secondi"""
+
     def __init__(self, ore=0, minuti=0, secondi=0):
         self.ore = ore
         self.minuti = minuti
@@ -27,3 +27,16 @@ class Tempo:
     
     def viene_dopo(self, other):
         return self.in_int() > other.in_int()
+
+class Canguro:
+    """Rappresenta un oggetto-canguro, la tasca è rappresentata da una lista
+    attributi: contenuto_tasca"""
+
+    def __init__(self, contenuto_tasca=[]):
+        self.contenuto_tasca = contenuto_tasca
+
+    def __str__(self):
+        return '(%s, %s)' % (repr(self), self.contenuto_tasca)
+
+    def intasca(self, oggetto):
+        self.contenuto_tasca.append(oggetto)
