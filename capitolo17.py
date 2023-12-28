@@ -27,21 +27,21 @@ class Tempo:
     
     def viene_dopo(self, other):
         return self.in_int() > other.in_int()
-    
+
 class Canguro:
     """Rappresenta un oggetto-canguro:
     attributi: nome, contenuto_tasca"""
 
-    def __init__(self, nome=None, contenuto_tasca=None):
+    def __init__(self, nome='senza_nome', contenuto_tasca=None):
         """Inizializza un oggetto-canguro, ha due parametri opzionali:
-        una stringa nome (default=None), una lista contenuto_tasca (default=None)"""
+        una stringa nome (default=senza_nome), una lista contenuto_tasca (default=None)"""
         self.nome = nome
         if contenuto_tasca == None:
             contenuto_tasca = []
         self.contenuto_tasca = contenuto_tasca
 
     def __str__(self):
-        """Restituisce una stringa di una tupla col nome del canguro e il contenuto della sua tasca"""
+        """Restituisce una stringa di tupla col nome del canguro e il contenuto della tasca"""
         return '(%s, %s)' % (self.nome, self.contenuto_tasca)
 
     def intasca(self, oggetto):

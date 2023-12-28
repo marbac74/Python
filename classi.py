@@ -24,6 +24,13 @@ class Rettangolo:
     """Rappresenta un rettangolo
     attributi: larghezza, altezza, angolo
     """
+    def __init__(self, larghezza=0, altezza=0, angolo=Punto()):
+        self.larghezza = larghezza
+        self.altezza = altezza
+        self.angolo = angolo
+    
+    def __str__(self):
+        return '(%g, %g, %s)' % (self.larghezza, self.altezza, repr((self.angolo.x, self.angolo.y)))
 
 class Cerchio:
     """Rappresenta un cerchio
