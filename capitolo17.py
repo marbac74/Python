@@ -16,10 +16,23 @@ class Tempo:
     def __str__(self):
         return '%.2d:%.2d:%.2d' % (self.ore, self.minuti, self.secondi)
     
+    def __add__(self, other):
+        if isinstance(other, Tempo):
+            return self.somma_tempo(other)
+        else:
+            return self.incremento(other)
+        
+    def __radd__(self, other):
+        return self.__add__(other)
+    
     def in_int(self):
         minuti = self.ore * 60 + self.minuti
         secondi = minuti * 60 + self.secondi
         return secondi
+    
+    def somma_tempo(self, other):
+        secondi = self.in_int() + other.in_int()
+        return int_in_tempo(secondi)
     
     def incremento(self, secondi):
         secondi += self.in_int()

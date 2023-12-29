@@ -12,7 +12,22 @@ class Punto:
 
     def __str__(self):
         return '(%g, %g)' % (self.x, self.y)
- 
+    
+    def __add__(self, other):
+        if isinstance(other, Punto):
+            return self.somma_punto(other)
+        else:
+            return self.somma_tupla(other)
+    
+    def somma_punto(self, other):
+        x = self.x + other.x
+        y = self.y + other.y
+        return Punto(x, y)
+    
+    def somma_tupla(self, other):
+        x = self.x + other[0]
+        y = self.y + other[1]
+        return Punto(x, y)
 
     def distanza_tra_punti(self, other):
         quadrato_diff_x = (other.x - self.x)**2
